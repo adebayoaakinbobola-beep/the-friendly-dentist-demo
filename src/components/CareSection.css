@@ -1,0 +1,601 @@
+/* ==========================================================================
+   CARE SECTION (SECTION 2) — "CARE, WITHOUT THE CLINICAL FEELING"
+   Asymmetrical editorial orbital 3D composition with floating categories
+   ========================================================================== */
+
+.care-section {
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(4rem, 8vh, 7rem) clamp(1.5rem, 3.5vw, 3rem);
+  background-color: var(--color-ivory);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background Atmosphere */
+.care-ambient-glow {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  height: 750px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(44, 214, 199, 0.12) 0%, rgba(15, 76, 255, 0.06) 45%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.care-subtle-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(10, 28, 62, 0.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 30%, transparent 80%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.care-container {
+  position: relative;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vh, 4rem);
+  z-index: 2;
+}
+
+/* ==========================================================================
+   EDITORIAL HEADER (ASYMMETRICAL LAYOUT)
+   ========================================================================== */
+
+.care-header-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  align-items: flex-end;
+  gap: clamp(2rem, 4vw, 4.5rem);
+}
+
+.care-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Small Editorial Label */
+.care-label-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.care-editorial-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(10, 28, 62, 0.08);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-navy-700);
+}
+
+.care-label-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  box-shadow: 0 0 8px var(--color-coral-glow);
+}
+
+/* Large Heading */
+.care-heading {
+  font-size: clamp(2.4rem, 4.4vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-navy-900);
+}
+
+.care-heading-lead {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--color-navy-900);
+}
+
+.care-heading-expression {
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-electric-blue);
+  letter-spacing: -0.015em;
+  padding-right: 0.15em;
+}
+
+.care-heading-expression .expression-swash {
+  position: absolute;
+  bottom: 0.06em;
+  left: 0.02em;
+  width: 98%;
+  height: 7px;
+  background: linear-gradient(90deg, rgba(44, 214, 199, 0.6) 0%, rgba(15, 76, 255, 0.35) 60%, transparent 100%);
+  border-radius: 4px;
+  z-index: -1;
+  transform: rotate(-0.5deg);
+}
+
+/* Supporting Narrative & CTA (Right Column) */
+.care-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 0.5rem;
+}
+
+.care-description {
+  font-size: clamp(1.05rem, 1.25vw, 1.1875rem);
+  line-height: 1.6;
+  color: var(--color-navy-600);
+  margin-bottom: 1.5rem;
+}
+
+.care-text-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-electric-blue);
+  letter-spacing: -0.01em;
+  transition: all 0.25s ease;
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.care-text-cta::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-electric-blue), var(--color-aqua));
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+
+.care-text-cta:hover {
+  color: var(--color-deep-blue);
+  transform: translateX(3px);
+}
+
+.care-text-cta:hover::after {
+  background: var(--color-deep-blue);
+}
+
+.care-text-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.care-text-cta:hover svg {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   3D ORBITAL STAGE & CENTRAL SCULPTURE
+   ========================================================================== */
+
+.care-orbital-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(520px, 62vh, 640px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+  margin: 1rem auto 0;
+}
+
+.care-orbital-rig {
+  position: relative;
+  width: 100%;
+  max-width: 1020px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* Central Sculptural 3D Tooth Form */
+.care-sculpture-anchor {
+  position: absolute;
+  width: clamp(210px, 22vw, 270px);
+  aspect-ratio: 1 / 1.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transform-style: preserve-3d;
+  animation: float-sculpture 7.5s ease-in-out infinite alternate;
+}
+
+.care-sculpture-svg {
+  width: 100%;
+  height: 100%;
+  filter: 
+    drop-shadow(0 30px 50px rgba(10, 28, 62, 0.18))
+    drop-shadow(0 10px 20px rgba(44, 214, 199, 0.22));
+  transition: transform 0.4s ease;
+}
+
+.care-sculpture-anchor:hover .care-sculpture-svg {
+  transform: scale(1.04) rotate(1deg);
+}
+
+/* Center Glow Aura behind Sculpture */
+.care-sculpture-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(44, 214, 199, 0.3) 0%, rgba(15, 76, 255, 0.15) 45%, transparent 70%);
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Orbital Track Lines (Elliptical Paths) */
+.care-orbit-track-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   FOUR FLOATING TREATMENT-CATEGORY ELEMENTS
+   Orbital positioning with true 3D depth and glassmorphic surfaces
+   ========================================================================== */
+
+.care-orbital-node {
+  position: absolute;
+  width: clamp(230px, 24vw, 290px);
+  padding: 1.25rem 1.4rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 20px 40px -10px rgba(10, 28, 62, 0.1),
+    0 0 0 1px rgba(10, 28, 62, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  user-select: none;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+/* Focus Visible Keyboard Navigation */
+.care-orbital-node:focus-visible {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: 4px;
+}
+
+/* Desktop Orbital Positions */
+/* 01 — Everyday Care (Top-Left, Z +35px) */
+.care-node-01 {
+  top: 8%;
+  left: 3%;
+  transform: translateZ(35px);
+  z-index: 4;
+}
+
+/* 02 — Restore (Top-Right, Z +25px) */
+.care-node-02 {
+  top: 10%;
+  right: 3%;
+  transform: translateZ(25px);
+  z-index: 4;
+}
+
+/* 03 — Enhance (Bottom-Right, Z +40px) */
+.care-node-03 {
+  bottom: 8%;
+  right: 5%;
+  transform: translateZ(40px);
+  z-index: 4;
+}
+
+/* 04 — Smile Confidence (Bottom-Left, Z +30px) */
+.care-node-04 {
+  bottom: 6%;
+  left: 5%;
+  transform: translateZ(30px);
+  z-index: 4;
+}
+
+/* Hover & Active States */
+.care-orbital-node:hover {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(44, 214, 199, 0.5);
+  box-shadow: 
+    0 26px 50px -12px rgba(15, 76, 255, 0.18),
+    0 10px 20px -5px rgba(44, 214, 199, 0.2),
+    0 0 0 1px rgba(15, 76, 255, 0.2);
+}
+
+.care-node-01:hover {
+  transform: translateZ(48px) translateY(-6px);
+}
+
+.care-node-02:hover {
+  transform: translateZ(38px) translateY(-6px);
+}
+
+.care-node-03:hover {
+  transform: translateZ(52px) translateY(-6px);
+}
+
+.care-node-04:hover {
+  transform: translateZ(42px) translateY(-6px);
+}
+
+/* Active Highlight State */
+.care-orbital-node.is-active {
+  border-color: var(--color-electric-blue);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 24px 45px -10px rgba(15, 76, 255, 0.22),
+    0 0 0 1.5px var(--color-electric-blue);
+}
+
+/* Node Header: Index + Coral Accent */
+.care-node-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.15rem;
+}
+
+.care-node-index-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.care-node-coral-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  box-shadow: 0 0 6px var(--color-coral-glow);
+  flex-shrink: 0;
+}
+
+.care-node-index {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-electric-blue);
+  text-transform: uppercase;
+}
+
+.care-node-indicator {
+  font-size: 0.75rem;
+  color: var(--color-aqua-deep);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.25s ease;
+}
+
+.care-orbital-node:hover .care-node-indicator,
+.care-orbital-node.is-active .care-node-indicator {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Node Title */
+.care-node-title {
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-navy-900);
+}
+
+/* Node Subtitle / Descriptor */
+.care-node-desc {
+  font-size: 0.84375rem;
+  line-height: 1.45;
+  color: var(--color-navy-600);
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+@keyframes float-sculpture {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-10px) rotate(1.2deg);
+  }
+}
+
+@keyframes orbit-glint {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (RECOMPOSED FOR LAPTOP & MOBILE)
+   ========================================================================== */
+
+/* Medium Laptops & Tablets Landscape */
+@media (max-width: 1040px) {
+  .care-header-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .care-header-right {
+    max-width: 580px;
+    padding-bottom: 0;
+  }
+
+  .care-orbital-stage {
+    height: 560px;
+  }
+
+  .care-node-01 {
+    top: 4%;
+    left: 1%;
+  }
+
+  .care-node-02 {
+    top: 6%;
+    right: 1%;
+  }
+
+  .care-node-03 {
+    bottom: 4%;
+    right: 2%;
+  }
+
+  .care-node-04 {
+    bottom: 2%;
+    left: 2%;
+  }
+}
+
+/* Tablets & Mobile (< 860px) — Stacked Radial/Editorial Flow */
+@media (max-width: 860px) {
+  .care-section {
+    padding: 3.5rem 1.25rem;
+    min-height: auto;
+  }
+
+  .care-container {
+    gap: 2.5rem;
+  }
+
+  .care-heading {
+    font-size: clamp(2.15rem, 7.5vw, 3rem);
+  }
+
+  /* Adjust stage layout for mobile */
+  .care-orbital-stage {
+    height: auto;
+    perspective: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 0;
+  }
+
+  .care-orbital-rig {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: static;
+  }
+
+  /* Show central sculpture as top centerpiece */
+  .care-sculpture-anchor {
+    position: relative;
+    width: 190px;
+    margin: 0 auto;
+    animation: float-sculpture 6s ease-in-out infinite alternate;
+  }
+
+  .care-orbit-track-svg {
+    display: none;
+  }
+
+  /* Transform 4 nodes into an editorial 2-column or 1-column interactive flow */
+  .care-orbital-node {
+    position: static;
+    width: 100%;
+    max-width: 480px;
+    transform: none !important;
+  }
+
+  .care-node-01,
+  .care-node-02,
+  .care-node-03,
+  .care-node-04 {
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+  }
+}
+
+/* Mobile Small (< 540px) */
+@media (max-width: 540px) {
+  .care-section {
+    padding: 3rem 1rem;
+  }
+
+  .care-heading {
+    font-size: clamp(1.95rem, 8vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  .care-description {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .care-sculpture-anchor {
+    width: 160px;
+  }
+
+  .care-orbital-node {
+    padding: 1rem 1.15rem;
+  }
+
+  .care-node-title {
+    font-size: 1.1rem;
+  }
+
+  .care-node-desc {
+    font-size: 0.8125rem;
+  }
+}

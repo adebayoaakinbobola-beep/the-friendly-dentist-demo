@@ -1,0 +1,120 @@
+.site-footer {
+  position: relative;
+  width: 100%;
+  padding: 4.5rem 6% 2rem;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(15, 76, 255, 0.12), transparent 45%),
+    linear-gradient(180deg, #020810 0%, #030b16 100%);
+  color: #faf7f2;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.footer-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.footer-brand h3 {
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.footer-brand p {
+  max-width: 360px;
+  margin: 0;
+  color: rgba(250, 247, 242, 0.65);
+  line-height: 1.7;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.footer-links a {
+  color: rgba(250, 247, 242, 0.72);
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #2cd6c7;
+  transform: translateX(4px);
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.footer-contact p {
+  margin: 0;
+  color: rgba(250, 247, 242, 0.65);
+}
+
+.footer-contact a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(44, 214, 199, 0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(15, 76, 255, 0.22),
+    rgba(44, 214, 199, 0.12)
+  );
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(15, 76, 255, 0.14);
+  transition: all 0.3s ease;
+}
+
+.footer-contact a:hover {
+  transform: translateY(-2px);
+  border-color: rgba(44, 214, 199, 0.7);
+  box-shadow:
+    0 14px 35px rgba(15, 76, 255, 0.22),
+    0 0 20px rgba(44, 214, 199, 0.12);
+}
+
+.footer-bottom {
+  width: 100%;
+  max-width: 1200px;
+  margin: 3.5rem auto 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-bottom p {
+  margin: 0;
+  color: rgba(250, 247, 242, 0.42);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 800px) {
+  .site-footer {
+    padding: 3.5rem 1.5rem 2rem;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    margin-top: 2.5rem;
+  }
+}

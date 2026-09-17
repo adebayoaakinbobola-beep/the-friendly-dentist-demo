@@ -1,0 +1,136 @@
+/* ==========================================================================
+   THE FRIENDLY DENTIST — DESIGN TOKENS & FOUNDATION
+   ========================================================================== */
+
+:root {
+  /* Surface & Background Palette (Warm Ivory / Off-White) */
+  --color-ivory: #FAF7F2;
+  --color-ivory-light: #FFFDF9;
+  --color-ivory-tint: #F3ECE1;
+  --color-ivory-muted: #EBE4D8;
+  --color-surface-glass: rgba(255, 255, 255, 0.75);
+  --color-surface-glass-border: rgba(255, 255, 255, 0.85);
+
+  /* Primary Accent (Electric / Deep Blue) */
+  --color-electric-blue: #0F4CFF;
+  --color-electric-blue-hover: #0038E0;
+  --color-deep-blue: #0A1C3E;
+  --color-deep-blue-hover: #071530;
+  --color-blue-glow: rgba(15, 76, 255, 0.25);
+
+  /* Soft Aqua Details */
+  --color-aqua: #2CD6C7;
+  --color-aqua-light: #E6FAF8;
+  --color-aqua-deep: #169E92;
+  --color-aqua-glow: rgba(44, 214, 199, 0.35);
+
+  /* Coral Accents (Restrained & High-Impact) */
+  --color-coral: #FF5A36;
+  --color-coral-soft: #FFF0ED;
+  --color-coral-glow: rgba(255, 90, 54, 0.4);
+
+  /* Typography (Dark Navy Hierarchy) */
+  --color-navy-900: #081220;
+  --color-navy-800: #0E1B2E;
+  --color-navy-700: #1B2A40;
+  --color-navy-600: #37465B;
+  --color-navy-500: #5C6B80;
+  --color-navy-400: #8896A8;
+  --color-navy-200: #D3DBE4;
+
+  /* Fonts */
+  --font-display: "Instrument Serif", "Playfair Display", Georgia, serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Refined Shadows */
+  --shadow-sm: 0 2px 8px -1px rgba(10, 28, 62, 0.06);
+  --shadow-md: 0 10px 25px -4px rgba(10, 28, 62, 0.08), 0 4px 10px -2px rgba(10, 28, 62, 0.04);
+  --shadow-lg: 0 20px 40px -10px rgba(10, 28, 62, 0.12), 0 8px 16px -4px rgba(10, 28, 62, 0.06);
+  --shadow-3d: 0 35px 70px -15px rgba(10, 28, 62, 0.2), 0 15px 30px -10px rgba(44, 214, 199, 0.15);
+  --shadow-glass: 0 20px 45px 0 rgba(10, 28, 62, 0.09), inset 0 0 0 1px rgba(255, 255, 255, 0.85);
+
+  /* Layout Constants */
+  --container-max-width: 1380px;
+  --nav-height: 64px;
+  --nav-clearance: 96px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  --radius-sculptural: 46% 54% 58% 42% / 38% 42% 58% 62%;
+}
+
+/* Base Resets */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  color: var(--color-navy-800);
+  background-color: var(--color-ivory);
+  background-image: 
+    radial-gradient(ellipse at 15% 0%, rgba(243, 236, 225, 0.75) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 20%, rgba(230, 250, 248, 0.65) 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(250, 247, 242, 1) 0%, transparent 100%);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+/* Links & Buttons defaults */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Selection highlight */
+::selection {
+  background-color: var(--color-aqua-light);
+  color: var(--color-deep-blue);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

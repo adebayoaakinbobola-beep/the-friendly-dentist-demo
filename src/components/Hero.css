@@ -1,0 +1,852 @@
+/* ==========================================================================
+   HERO COMPONENT STYLES
+   Sophisticated editorial 3D composition with layered depth
+   ========================================================================== */
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: calc(var(--nav-clearance) + 1.25rem);
+  padding-bottom: clamp(1.5rem, 3vh, 3rem);
+  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+  padding-right: clamp(1.25rem, 3vw, 2.5rem);
+  overflow-x: clip;
+  background-color: var(--color-ivory);
+  box-sizing: border-box;
+}
+
+/* Atmospheric Ambient Lighting Gradients */
+.hero-ambient-glow {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(44, 214, 199, 0.18) 0%, rgba(15, 76, 255, 0.08) 50%, transparent 70%);
+  filter: blur(75px);
+  pointer-events: none;
+  z-index: 0;
+  animation: pulse-glow 10s ease-in-out infinite alternate;
+}
+
+.hero-ambient-glow-secondary {
+  position: absolute;
+  bottom: 5%;
+  left: 3%;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(243, 236, 225, 0.9) 0%, rgba(255, 90, 54, 0.05) 60%, transparent 75%);
+  filter: blur(65px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle Architectural Grid Texture */
+.hero-subtle-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(10, 28, 62, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10, 28, 62, 0.02) 1px, transparent 1px);
+  mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main Container Grid (Asymmetrical Two-Column) */
+.hero-container {
+  position: relative;
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(1.75rem, 3.2vw, 3.5rem);
+  z-index: 2;
+}
+
+/* ==========================================================================
+   LEFT COLUMN: EDITORIAL CONTENT & TYPOGRAPHY
+   (Preserved exactly with comfortable clearance)
+   ========================================================================== */
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 3;
+}
+
+/* Unofficial Concept Badge */
+.hero-badge-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.hero-concept-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(10, 28, 62, 0.07);
+  box-shadow: 0 4px 12px -2px rgba(10, 28, 62, 0.04);
+}
+
+.badge-pulse-dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  flex-shrink: 0;
+}
+
+.badge-pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-coral);
+  animation: badge-ring-pulse 2.2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+  opacity: 0.8;
+}
+
+.badge-label {
+  font-size: 0.78125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--color-navy-700);
+}
+
+/* Headline */
+.hero-headline {
+  font-size: clamp(2.35rem, 4.1vw, 4.25rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-navy-900);
+  margin-bottom: 1.35rem;
+}
+
+.headline-lead {
+  display: block;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--color-navy-900);
+}
+
+.headline-expression {
+  display: inline-block;
+  position: relative;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-electric-blue);
+  letter-spacing: -0.015em;
+  padding-right: 0.15em;
+}
+
+.headline-expression .expression-swash {
+  position: absolute;
+  bottom: 0.05em;
+  left: 0.02em;
+  width: 98%;
+  height: 8px;
+  background: linear-gradient(90deg, rgba(44, 214, 199, 0.6) 0%, rgba(15, 76, 255, 0.4) 60%, transparent 100%);
+  border-radius: 4px;
+  z-index: -1;
+  transform: rotate(-0.5deg);
+}
+
+/* Supporting Copy */
+.hero-copy {
+  font-size: clamp(1.05rem, 1.2vw, 1.1875rem);
+  line-height: 1.6;
+  color: var(--color-navy-600);
+  max-width: 520px;
+  margin-bottom: 1.85rem;
+  font-weight: 400;
+}
+
+/* CTA Group */
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.95rem 1.85rem;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, #0F4CFF 0%, #0A2463 100%);
+  color: #FFF;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 
+    0 10px 25px -3px rgba(15, 76, 255, 0.35),
+    0 4px 10px -2px rgba(10, 28, 62, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-explore::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.btn-primary-explore:hover::before {
+  left: 100%;
+}
+
+.btn-primary-explore:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 14px 30px -4px rgba(15, 76, 255, 0.45),
+    0 6px 12px -2px rgba(10, 28, 62, 0.18);
+  color: #FFF;
+}
+
+.btn-primary-explore:active {
+  transform: translateY(0);
+}
+
+.btn-primary-explore svg {
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.btn-primary-explore:hover svg {
+  transform: translateX(3px);
+}
+
+.btn-secondary-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.95rem 1.65rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(10, 28, 62, 0.12);
+  color: var(--color-navy-800);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 0 4px 14px -2px rgba(10, 28, 62, 0.05);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary-call:hover {
+  background: #FFF;
+  border-color: var(--color-electric-blue);
+  color: var(--color-electric-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -3px rgba(15, 76, 255, 0.15);
+}
+
+.btn-secondary-call:active {
+  transform: translateY(0);
+}
+
+.btn-secondary-call svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+}
+
+.btn-secondary-call:hover svg {
+  transform: rotate(8deg);
+}
+
+/* Reassurance Contextual Bar */
+.hero-micro-reassurance {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.35rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid rgba(10, 28, 62, 0.08);
+  color: var(--color-navy-500);
+  font-size: 0.84375rem;
+}
+
+.reassurance-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.reassurance-item svg {
+  width: 15px;
+  height: 15px;
+  color: var(--color-aqua-deep);
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: 3D SCULPTURAL VISUAL COMPOSITION
+   (Restored with robust viewport scaling and non-collapsing dimensions)
+   ========================================================================== */
+
+.hero-visual-perspective-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1400px;
+  z-index: 2;
+  padding: 0.5rem;
+}
+
+.hero-visual-3d-rig {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  height: clamp(350px, 47vh, 470px);
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Subtle Idle Floating Breathing Animation */
+.hero-visual-floating-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: float-gentle 7s ease-in-out infinite alternate;
+}
+
+/* --------------------------------------------------------------------------
+   DEPTH LAYER -1: Abstract Tooth & Curved Orbital Line (Background)
+   -------------------------------------------------------------------------- */
+
+/* Abstract Tooth-Inspired Porcelain Ceramic Sculpture */
+.sculptural-tooth-abstract {
+  position: absolute;
+  top: -6%;
+  right: -3%;
+  width: 135px;
+  height: 145px;
+  transform: translateZ(-35px) rotate(10deg);
+  pointer-events: none;
+  z-index: 1;
+  filter: drop-shadow(0 15px 25px rgba(10, 28, 62, 0.12));
+}
+
+.sculptural-tooth-abstract svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* 3D Elliptical Curved Orbital Line */
+.orbital-track-container {
+  position: absolute;
+  top: -8%;
+  left: -8%;
+  width: 116%;
+  height: 116%;
+  transform: translateZ(-25px) rotate(-14deg);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.orbital-track-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.orbital-bead {
+  transform-origin: center;
+  animation: orbital-glimmer 4s ease-in-out infinite alternate;
+}
+
+/* --------------------------------------------------------------------------
+   DEPTH LAYER 0: Main Sculptural Rounded 3D Frame
+   -------------------------------------------------------------------------- */
+
+.sculptural-frame-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-sculptural);
+  padding: 9px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(243, 236, 225, 0.65) 100%);
+  box-shadow: 
+    0 35px 70px -15px rgba(10, 28, 62, 0.22),
+    0 15px 30px -10px rgba(44, 214, 199, 0.2),
+    0 0 0 1px rgba(255, 255, 255, 0.85),
+    inset 0 2px 4px rgba(255, 255, 255, 0.9),
+    inset 0 -3px 8px rgba(10, 28, 62, 0.06);
+  transform: translateZ(0);
+  transition: box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.sculptural-frame-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: calc(var(--radius-sculptural));
+  overflow: hidden;
+  background-color: var(--color-ivory-tint);
+}
+
+.sculptural-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transform: scale(1.03);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sculptural-frame-outer:hover .sculptural-image {
+  transform: scale(1.06);
+}
+
+/* Editorial Vignette & Warm Rim Glaze */
+.sculptural-frame-inner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, transparent 40%, rgba(10, 28, 62, 0.35) 100%),
+    radial-gradient(ellipse at 85% 15%, rgba(44, 214, 199, 0.2) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Discreet Stock Visual Tag on Frame */
+.image-attribution-tag {
+  position: absolute;
+  bottom: 1.15rem;
+  right: 1.5rem;
+  z-index: 4;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(10, 28, 62, 0.58);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   DEPTH LAYER +1: Foreground Elements (Z +40px to +55px)
+   -------------------------------------------------------------------------- */
+
+/* 1. Translucent 3D Glass Sphere */
+.floating-glass-sphere {
+  position: absolute;
+  top: 5%;
+  left: -5%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  transform: translateZ(55px);
+  z-index: 5;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 30% 28%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.55) 18%, rgba(255, 255, 255, 0.1) 45%, transparent 70%),
+    radial-gradient(circle at 75% 82%, rgba(44, 214, 199, 0.55) 0%, rgba(15, 76, 255, 0.3) 40%, transparent 75%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(8px) saturate(140%);
+  -webkit-backdrop-filter: blur(8px) saturate(140%);
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 22px 40px -10px rgba(10, 28, 62, 0.28),
+    0 10px 20px -5px rgba(44, 214, 199, 0.3),
+    inset -4px -6px 14px rgba(15, 76, 255, 0.2),
+    inset 4px 6px 12px rgba(255, 255, 255, 0.9);
+  animation: float-sphere 6s ease-in-out infinite alternate;
+}
+
+/* 2. Floating Frosted Glass Information Element */
+.floating-glass-card {
+  position: absolute;
+  bottom: -2%;
+  left: -5%;
+  transform: translateZ(48px);
+  z-index: 5;
+  max-width: 260px;
+  padding: 0.95rem 1.15rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(170%);
+  -webkit-backdrop-filter: blur(20px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 25px 45px -12px rgba(10, 28, 62, 0.16),
+    0 0 0 1px rgba(10, 28, 62, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  animation: float-card 7.5s ease-in-out infinite alternate;
+}
+
+.glass-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.glass-card-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-coral);
+  box-shadow: 0 0 8px var(--color-coral-glow);
+}
+
+.glass-card-tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-electric-blue);
+}
+
+.glass-card-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-navy-900);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.015em;
+}
+
+.glass-card-desc {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-navy-600);
+}
+
+/* 3. Floating Accent Pill (Top Right, Z +38px) */
+.floating-glass-pill {
+  position: absolute;
+  top: 8%;
+  right: -3%;
+  transform: translateZ(40px);
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 
+    0 16px 30px -8px rgba(10, 28, 62, 0.12),
+    0 0 0 1px rgba(10, 28, 62, 0.04);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-navy-800);
+  pointer-events: none;
+  animation: float-pill 8s ease-in-out infinite alternate;
+}
+
+.floating-glass-pill svg {
+  width: 14px;
+  height: 14px;
+  color: var(--color-aqua-deep);
+}
+
+/* ==========================================================================
+   KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes pulse-glow {
+  0% {
+    transform: scale(0.95) translate(0, 0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.1) translate(-20px, 15px);
+    opacity: 1;
+  }
+}
+
+@keyframes badge-ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes float-gentle {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+@keyframes float-sphere {
+  0% {
+    transform: translateZ(55px) translateY(0) scale(1);
+  }
+  100% {
+    transform: translateZ(55px) translateY(-10px) scale(1.03);
+  }
+}
+
+@keyframes float-card {
+  0% {
+    transform: translateZ(48px) translateY(0);
+  }
+  100% {
+    transform: translateZ(48px) translateY(8px);
+  }
+}
+
+@keyframes float-pill {
+  0% {
+    transform: translateZ(40px) translateY(0);
+  }
+  100% {
+    transform: translateZ(40px) translateY(-7px);
+  }
+}
+
+@keyframes orbital-glimmer {
+  0% {
+    opacity: 0.7;
+    filter: drop-shadow(0 0 4px rgba(44, 214, 199, 0.4));
+  }
+  100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(44, 214, 199, 0.9));
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (LAPTOP, TABLET & MOBILE)
+   ========================================================================== */
+
+/* Laptop Height Optimization (e.g. 1366x768, 1440x900) */
+@media (max-height: 820px) and (min-width: 861px) {
+  .hero-section {
+    padding-top: calc(var(--nav-clearance) + 0.75rem);
+    padding-bottom: 1.25rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+    margin-bottom: 1rem;
+  }
+
+  .hero-badge-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .hero-copy {
+    font-size: 1.05rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .hero-cta-group {
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-visual-3d-rig {
+    max-width: 410px;
+    height: clamp(320px, 43vh, 390px);
+  }
+
+  .sculptural-tooth-abstract {
+    width: 115px;
+    height: 125px;
+  }
+
+  .floating-glass-sphere {
+    width: 68px;
+    height: 68px;
+  }
+
+  .floating-glass-card {
+    max-width: 235px;
+    padding: 0.8rem 1rem;
+  }
+}
+
+/* Intermediate screens down to 860px */
+@media (max-width: 1100px) and (min-width: 861px) {
+  .hero-container {
+    gap: 1.75rem;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .hero-visual-3d-rig {
+    max-width: 390px;
+    height: clamp(320px, 42vh, 410px);
+  }
+}
+
+/* Tablet / Mobile portrait */
+@media (max-width: 860px) {
+  .hero-section {
+    padding-top: calc(var(--nav-clearance) + 1rem);
+    padding-bottom: 2.5rem;
+    min-height: auto;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .hero-content {
+    max-width: 580px;
+    margin: 0 auto;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .hero-visual-perspective-stage {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .hero-visual-3d-rig {
+    max-width: 380px;
+    height: 350px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 540px) {
+  .hero-section {
+    padding-top: calc(var(--nav-clearance) + 0.65rem);
+    padding-bottom: 2rem;
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+  }
+
+  .hero-badge-wrapper {
+    margin-bottom: 1rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    line-height: 1.12;
+    margin-bottom: 1rem;
+  }
+
+  .hero-copy {
+    font-size: 1rem;
+    line-height: 1.55;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-primary-explore,
+  .btn-secondary-call {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem 1.5rem;
+  }
+
+  .hero-micro-reassurance {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-top: 1rem;
+  }
+
+  .hero-visual-perspective-stage {
+    max-width: 320px;
+    padding: 0;
+  }
+
+  .hero-visual-3d-rig {
+    max-width: 300px;
+    height: 290px;
+  }
+
+  .floating-glass-sphere {
+    width: 56px;
+    height: 56px;
+    top: 2%;
+    left: -2%;
+  }
+
+  .floating-glass-card {
+    max-width: 210px;
+    padding: 0.75rem 0.85rem;
+    left: 0;
+    bottom: -4%;
+  }
+
+  .glass-card-title {
+    font-size: 0.85rem;
+  }
+
+  .glass-card-desc {
+    font-size: 0.75rem;
+  }
+
+  .floating-glass-pill {
+    top: 6%;
+    right: -2%;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+  }
+}
